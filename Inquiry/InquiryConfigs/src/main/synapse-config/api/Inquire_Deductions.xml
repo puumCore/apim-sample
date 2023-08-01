@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/default" name="Inquire_Deductions" version="1.0.0" version-type="context" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" url-mapping="/inquireDisbursementDetails">
+        <inSequence>
+            <property action="remove" name="REST_URL_POSTFIX" scope="axis2"/>
+            <payloadFactory media-type="xml" template-type="freemarker">
+                <format><![CDATA[<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+<soapenv:Header/>
+<soapenv:Body>
+<web:inquireDisbursementDetails xmlns:web="http://spi.loans.app.fcr.iflex.com"><sessionContext><bankCode>${payload.inquireDisbursementDetails.sessionContext.bankCode}</bankCode><channel>${payload.inquireDisbursementDetails.sessionContext.channel}</channel><externalBatchNumber>${payload.inquireDisbursementDetails.sessionContext.externalBatchNumber}</externalBatchNumber><externalReferenceNo>${payload.inquireDisbursementDetails.sessionContext.externalReferenceNo}</externalReferenceNo><externalSystemAuditTrailNumber>${payload.inquireDisbursementDetails.sessionContext.externalSystemAuditTrailNumber}</externalSystemAuditTrailNumber><localDateTimeText>${payload.inquireDisbursementDetails.sessionContext.localDateTimeText}</localDateTimeText><originalReferenceNo>${payload.inquireDisbursementDetails.sessionContext.originalReferenceNo}</originalReferenceNo><overridenWarnings>${payload.inquireDisbursementDetails.sessionContext.overridenWarnings}</overridenWarnings><postingDateText>${payload.inquireDisbursementDetails.sessionContext.postingDateText}</postingDateText><reason><comment>${payload.inquireDisbursementDetails.sessionContext.reason.comment}</comment><reasonCode>${payload.inquireDisbursementDetails.sessionContext.reason.reasonCode}</reasonCode></reason><serviceCode>${payload.inquireDisbursementDetails.sessionContext.serviceCode}</serviceCode><sessionTicket>${payload.inquireDisbursementDetails.sessionContext.sessionTicket}</sessionTicket><supervisorContext><primaryPassword>${payload.inquireDisbursementDetails.sessionContext.supervisorContext.primaryPassword}</primaryPassword><userId>${payload.inquireDisbursementDetails.sessionContext.supervisorContext.userId}</userId></supervisorContext><transactionBranch>${payload.inquireDisbursementDetails.sessionContext.transactionBranch}</transactionBranch><userReferenceNumber>${payload.inquireDisbursementDetails.sessionContext.userReferenceNumber}</userReferenceNumber><valueDateText>${payload.inquireDisbursementDetails.sessionContext.valueDateText}</valueDateText></sessionContext><accountId>${payload.inquireDisbursementDetails.accountId}</accountId></web:inquireDisbursementDetails></soapenv:Body>
+</soapenv:Envelope>
+]]></format>
+                <args/>
+            </payloadFactory>
+            <property name="messageType" scope="axis2" type="STRING" value="application/soap+xml"/>
+            <call>
+                <endpoint key="Inquire_Deductions_SOAP_ENDPOINT"/>
+            </call>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/inquireDeductionDetails">
+        <inSequence>
+            <property action="remove" name="REST_URL_POSTFIX" scope="axis2"/>
+            <payloadFactory media-type="xml" template-type="freemarker">
+                <format><![CDATA[<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+<soapenv:Header/>
+<soapenv:Body>
+<web:inquireDeductionDetails xmlns:web="http://spi.loans.app.fcr.iflex.com"><sessionContext><bankCode>${payload.inquireDeductionDetails.sessionContext.bankCode}</bankCode><channel>${payload.inquireDeductionDetails.sessionContext.channel}</channel><externalBatchNumber>${payload.inquireDeductionDetails.sessionContext.externalBatchNumber}</externalBatchNumber><externalReferenceNo>${payload.inquireDeductionDetails.sessionContext.externalReferenceNo}</externalReferenceNo><externalSystemAuditTrailNumber>${payload.inquireDeductionDetails.sessionContext.externalSystemAuditTrailNumber}</externalSystemAuditTrailNumber><localDateTimeText>${payload.inquireDeductionDetails.sessionContext.localDateTimeText}</localDateTimeText><originalReferenceNo>${payload.inquireDeductionDetails.sessionContext.originalReferenceNo}</originalReferenceNo><overridenWarnings>${payload.inquireDeductionDetails.sessionContext.overridenWarnings}</overridenWarnings><postingDateText>${payload.inquireDeductionDetails.sessionContext.postingDateText}</postingDateText><reason><comment>${payload.inquireDeductionDetails.sessionContext.reason.comment}</comment><reasonCode>${payload.inquireDeductionDetails.sessionContext.reason.reasonCode}</reasonCode></reason><serviceCode>${payload.inquireDeductionDetails.sessionContext.serviceCode}</serviceCode><sessionTicket>${payload.inquireDeductionDetails.sessionContext.sessionTicket}</sessionTicket><supervisorContext><primaryPassword>${payload.inquireDeductionDetails.sessionContext.supervisorContext.primaryPassword}</primaryPassword><userId>${payload.inquireDeductionDetails.sessionContext.supervisorContext.userId}</userId></supervisorContext><transactionBranch>${payload.inquireDeductionDetails.sessionContext.transactionBranch}</transactionBranch><userReferenceNumber>${payload.inquireDeductionDetails.sessionContext.userReferenceNumber}</userReferenceNumber><valueDateText>${payload.inquireDeductionDetails.sessionContext.valueDateText}</valueDateText></sessionContext><product>${payload.inquireDeductionDetails.product}</product><branch>${payload.inquireDeductionDetails.branch}</branch><loanAmt>${payload.inquireDeductionDetails.loanAmt}</loanAmt><termInMonths>${payload.inquireDeductionDetails.termInMonths}</termInMonths></web:inquireDeductionDetails></soapenv:Body>
+</soapenv:Envelope>
+]]></format>
+                <args/>
+            </payloadFactory>
+            <property name="messageType" scope="axis2" type="STRING" value="application/soap+xml"/>
+            <call>
+                <endpoint key="Inquire_Deductions_SOAP_ENDPOINT"/>
+            </call>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/doDisbursementProcessingForIBOC">
+        <inSequence>
+            <property action="remove" name="REST_URL_POSTFIX" scope="axis2"/>
+            <payloadFactory media-type="xml" template-type="freemarker">
+                <format><![CDATA[<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+<soapenv:Header/>
+<soapenv:Body>
+<web:doDisbursementProcessingForIBOC xmlns:web="http://spi.loans.app.fcr.iflex.com"><context><bankCode>${payload.doDisbursementProcessingForIBOC.context.bankCode}</bankCode><channel>${payload.doDisbursementProcessingForIBOC.context.channel}</channel><externalBatchNumber>${payload.doDisbursementProcessingForIBOC.context.externalBatchNumber}</externalBatchNumber><externalReferenceNo>${payload.doDisbursementProcessingForIBOC.context.externalReferenceNo}</externalReferenceNo><externalSystemAuditTrailNumber>${payload.doDisbursementProcessingForIBOC.context.externalSystemAuditTrailNumber}</externalSystemAuditTrailNumber><localDateTimeText>${payload.doDisbursementProcessingForIBOC.context.localDateTimeText}</localDateTimeText><originalReferenceNo>${payload.doDisbursementProcessingForIBOC.context.originalReferenceNo}</originalReferenceNo><overridenWarnings>${payload.doDisbursementProcessingForIBOC.context.overridenWarnings}</overridenWarnings><postingDateText>${payload.doDisbursementProcessingForIBOC.context.postingDateText}</postingDateText><reason><comment>${payload.doDisbursementProcessingForIBOC.context.reason.comment}</comment><reasonCode>${payload.doDisbursementProcessingForIBOC.context.reason.reasonCode}</reasonCode></reason><serviceCode>${payload.doDisbursementProcessingForIBOC.context.serviceCode}</serviceCode><sessionTicket>${payload.doDisbursementProcessingForIBOC.context.sessionTicket}</sessionTicket><supervisorContext><primaryPassword>${payload.doDisbursementProcessingForIBOC.context.supervisorContext.primaryPassword}</primaryPassword><userId>${payload.doDisbursementProcessingForIBOC.context.supervisorContext.userId}</userId></supervisorContext><transactionBranch>${payload.doDisbursementProcessingForIBOC.context.transactionBranch}</transactionBranch><userReferenceNumber>${payload.doDisbursementProcessingForIBOC.context.userReferenceNumber}</userReferenceNumber><valueDateText>${payload.doDisbursementProcessingForIBOC.context.valueDateText}</valueDateText></context><loanAccountNo>${payload.doDisbursementProcessingForIBOC.loanAccountNo}</loanAccountNo><flgScenario>${payload.doDisbursementProcessingForIBOC.flgScenario}</flgScenario><flgSchemeLn>${payload.doDisbursementProcessingForIBOC.flgSchemeLn}</flgSchemeLn><iBOCdeductionDetailsDTO ARRAY_PLACEHOLDER="payload.doDisbursementProcessingForIBOC.iBOCdeductionDetailsDTO"><ctrSrlDednNo>${iBOCdeductionDetailsDTO.ctrSrlDednNo}</ctrSrlDednNo><deductionAmountInAccountCurrency>${iBOCdeductionDetailsDTO.deductionAmountInAccountCurrency}</deductionAmountInAccountCurrency><deductionCode>${iBOCdeductionDetailsDTO.deductionCode}</deductionCode><isWaived>${iBOCdeductionDetailsDTO.isWaived}</isWaived></iBOCdeductionDetailsDTO><acctType>${payload.doDisbursementProcessingForIBOC.acctType}</acctType><disbAmount>${payload.doDisbursementProcessingForIBOC.disbAmount}</disbAmount><codAcctNoDisb>${payload.doDisbursementProcessingForIBOC.codAcctNoDisb}</codAcctNoDisb><ledgerCcyShrtName>${payload.doDisbursementProcessingForIBOC.ledgerCcyShrtName}</ledgerCcyShrtName><ledgerBranchCode>${payload.doDisbursementProcessingForIBOC.ledgerBranchCode}</ledgerBranchCode><ioiTerm>${payload.doDisbursementProcessingForIBOC.ioiTerm}</ioiTerm><firstRepayDate>${payload.doDisbursementProcessingForIBOC.firstRepayDate}</firstRepayDate><iBOCPayoutDetailsDTO ARRAY_PLACEHOLDER="payload.doDisbursementProcessingForIBOC.iBOCPayoutDetailsDTO"><amtInWords>${iBOCPayoutDetailsDTO.amtInWords}</amtInWords><amtPayoutTcy>${iBOCPayoutDetailsDTO.amtPayoutTcy}</amtPayoutTcy><bankName>${iBOCPayoutDetailsDTO.bankName}</bankName><benefbankCustAcct>${iBOCPayoutDetailsDTO.benefbankCustAcct}</benefbankCustAcct><benefbankGlAcct>${iBOCPayoutDetailsDTO.benefbankGlAcct}</benefbankGlAcct><chequeCollectionBranch>${iBOCPayoutDetailsDTO.chequeCollectionBranch}</chequeCollectionBranch><codAcctBenef>${iBOCPayoutDetailsDTO.codAcctBenef}</codAcctBenef><codPayoutTcy>${iBOCPayoutDetailsDTO.codPayoutTcy}</codPayoutTcy><codRepayMode>${iBOCPayoutDetailsDTO.codRepayMode}</codRepayMode><ctrSrlNo>${iBOCPayoutDetailsDTO.ctrSrlNo}</ctrSrlNo><flgResidual>${iBOCPayoutDetailsDTO.flgResidual}</flgResidual><issuer>${iBOCPayoutDetailsDTO.issuer}</issuer><ledgerPayoutBranch>${iBOCPayoutDetailsDTO.ledgerPayoutBranch}</ledgerPayoutBranch><namBenef>${iBOCPayoutDetailsDTO.namBenef}</namBenef><narrative>${iBOCPayoutDetailsDTO.narrative}</narrative><transferType>${iBOCPayoutDetailsDTO.transferType}</transferType><txtBenefAddr1>${iBOCPayoutDetailsDTO.txtBenefAddr1}</txtBenefAddr1><txtBenefAddr2>${iBOCPayoutDetailsDTO.txtBenefAddr2}</txtBenefAddr2><txtBenefAddr3>${iBOCPayoutDetailsDTO.txtBenefAddr3}</txtBenefAddr3></iBOCPayoutDetailsDTO></web:doDisbursementProcessingForIBOC></soapenv:Body>
+</soapenv:Envelope>
+]]></format>
+                <args/>
+            </payloadFactory>
+            <property name="messageType" scope="axis2" type="STRING" value="application/soap+xml"/>
+            <call>
+                <endpoint key="Inquire_Deductions_SOAP_ENDPOINT"/>
+            </call>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>
