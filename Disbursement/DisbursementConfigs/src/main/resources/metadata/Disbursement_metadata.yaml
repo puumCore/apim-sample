@@ -1,0 +1,11 @@
+---
+key: "Disbursement-1.0.0"
+name : "Disbursement"
+displayName : "Disbursement"
+description: "Sample API"
+version: "1.0.0"
+serviceUrl: "https://{MI_HOST}:{MI_PORT}/default"
+definitionType: "OAS3"
+securityType: "BASIC"
+mutualSSLEnabled: false
+apiId : "null"

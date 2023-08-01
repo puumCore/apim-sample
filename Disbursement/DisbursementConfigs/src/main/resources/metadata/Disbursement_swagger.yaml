@@ -1,0 +1,509 @@
+openapi: 3.0.1
+info:
+  title: Disbursement
+  description: API Definition of Disbursement
+  version: 1.0.0
+servers:
+- url: /default
+paths:
+  /inquireDisbursementDetails:
+    post:
+      operationId: inquireDisbursementDetails
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                inquireDisbursementDetails:
+                  $ref: '#/components/schemas/rootElement_inquireDisbursementDetails'
+        required: true
+      responses:
+        default:
+          description: Default Description
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  inquireDisbursementDetailsResponse:
+                    $ref: '#/components/schemas/inquireDisbursementDetailsResponse'
+      x-wso2-soap:
+        soap-action: ''
+        x-soap-message-type: document
+        soap-operation: inquireDisbursementDetails
+        namespace: http://spi.loans.app.fcr.iflex.com
+        x-soap-version: '1.1'
+  /doDisbursementProcessingForIBOC:
+    post:
+      operationId: doDisbursementProcessingForIBOC
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                doDisbursementProcessingForIBOC:
+                  $ref: '#/components/schemas/rootElement_doDisbursementProcessingForIBOC'
+        required: true
+      responses:
+        default:
+          description: Default Description
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  doDisbursementProcessingForIBOCResponse:
+                    $ref: '#/components/schemas/doDisbursementProcessingForIBOCResponse'
+      x-wso2-soap:
+        soap-action: ''
+        x-soap-message-type: document
+        soap-operation: doDisbursementProcessingForIBOC
+        namespace: http://spi.loans.app.fcr.iflex.com
+        x-soap-version: '1.1'
+  /inquireDeductionDetails:
+    post:
+      operationId: inquireDeductionDetails
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                inquireDeductionDetails:
+                  $ref: '#/components/schemas/rootElement_inquireDeductionDetails'
+        required: true
+      responses:
+        default:
+          description: Default Description
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  inquireDeductionDetailsResponse:
+                    $ref: '#/components/schemas/inquireDeductionDetailsResponse'
+      x-wso2-soap:
+        soap-action: ''
+        x-soap-message-type: document
+        soap-operation: inquireDeductionDetails
+        namespace: http://spi.loans.app.fcr.iflex.com
+        x-soap-version: '1.1'
+components:
+  schemas:
+    TransactionStatus:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        extendedReply:
+          $ref: '#/components/schemas/ExtendedReply'
+        externalReferenceNo:
+          type: string
+        inputOverridenWarnings:
+          type: string
+        isOverriden:
+          type: boolean
+        isServiceChargeApplied:
+          type: boolean
+        memo:
+          type: string
+        replyCode:
+          type: integer
+          format: int64
+        replyText:
+          type: string
+        spReturnValue:
+          type: integer
+          format: int64
+        transactionDateTimeText:
+          type: string
+        userReferenceNumber:
+          type: string
+        validationErrors:
+          $ref: '#/components/schemas/ArrayOf_tns8_ValidationError'
+      xml:
+        namespace: http://transaction.entity.fcr.iflex.com
+      x-namespace-qualified: false
+    ArrayOf_tns9_IBOCDeductionDetailsDTO:
+      type: object
+      properties:
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/IBOCDeductionDetailsDTO'
+      xml:
+        namespace: http://dto.spi.loans.app.fcr.iflex.com
+      x-namespace-qualified: false
+    InquireDeductionDetailsResponse:
+      type: object
+      properties:
+        ExtensionObject:
+          $ref: '#/components/schemas/BaseResponse'
+      xml:
+        namespace: http://dto.spi.loans.app.fcr.iflex.com
+      x-namespace-qualified: false
+    IBOCDeductionDetailsDTO:
+      type: object
+      properties:
+        dednCtrlSrlNo:
+          type: integer
+          format: int64
+        deductionAmtAcy:
+          type: number
+          format: float
+        deductionAmtLcy:
+          type: number
+          format: float
+        deductionCode:
+          type: integer
+          format: int64
+        deductionMethod:
+          type: string
+        deductionMode:
+          type: string
+        deductionPlan:
+          type: integer
+          format: int64
+        deductionType:
+          type: string
+        planName:
+          type: string
+        ratPctAmtFixed:
+          type: number
+          format: float
+      xml:
+        namespace: http://dto.spi.loans.app.fcr.iflex.com
+      x-namespace-qualified: false
+    UserContext:
+      type: object
+      properties:
+        primaryPassword:
+          type: string
+        userId:
+          type: string
+      xml:
+        namespace: http://context.app.fcr.iflex.com
+      x-namespace-qualified: false
+    AuthorizationReason:
+      type: object
+      properties:
+        comment:
+          type: string
+        reasonCode:
+          type: integer
+          format: int32
+      xml:
+        namespace: http://context.app.fcr.iflex.com
+      x-namespace-qualified: false
+    SessionContext:
+      type: object
+      properties:
+        bankCode:
+          type: integer
+          format: int32
+        channel:
+          type: string
+        externalBatchNumber:
+          type: integer
+          format: int64
+        externalReferenceNo:
+          type: string
+        externalSystemAuditTrailNumber:
+          type: integer
+          format: int64
+        localDateTimeText:
+          type: string
+        originalReferenceNo:
+          type: string
+        overridenWarnings:
+          type: string
+        postingDateText:
+          type: string
+        reason:
+          $ref: '#/components/schemas/AuthorizationReason'
+        serviceCode:
+          type: string
+        sessionTicket:
+          type: string
+        supervisorContext:
+          $ref: '#/components/schemas/UserContext'
+        transactionBranch:
+          type: integer
+          format: int32
+        userId:
+          type: string
+        userReferenceNumber:
+          type: string
+        valueDateText:
+          type: string
+      xml:
+        namespace: http://context.app.fcr.iflex.com
+      x-namespace-qualified: false
+    DisbursementInquiryResponse:
+      type: object
+      properties:
+        ExtensionObject:
+          $ref: '#/components/schemas/BaseResponse'
+      xml:
+        namespace: http://dto.loans.app.fcr.iflex.com
+      x-namespace-qualified: false
+    IBOCdeductionDetailsDTO:
+      type: object
+      properties:
+        ctrSrlDednNo:
+          type: integer
+          format: int32
+        deductionAmountInAccountCurrency:
+          type: number
+          format: float
+        deductionCode:
+          type: integer
+          format: int32
+        isWaived:
+          type: string
+      xml:
+        namespace: http://dto.loans.app.fcr.iflex.com
+      x-namespace-qualified: false
+    IBOCPayoutDetailsDTO:
+      type: object
+      properties:
+        amtInWords:
+          type: string
+        amtPayoutTcy:
+          type: number
+          format: float
+        bankName:
+          type: string
+        benefbankCustAcct:
+          type: string
+        benefbankGlAcct:
+          type: string
+        chequeCollectionBranch:
+          type: string
+        codAcctBenef:
+          type: string
+        codPayoutTcy:
+          type: integer
+          format: int32
+        codRepayMode:
+          type: string
+        ctrSrlNo:
+          type: integer
+          format: int32
+        flgResidual:
+          type: string
+        issuer:
+          type: string
+        ledgerPayoutBranch:
+          type: integer
+          format: int32
+        namBenef:
+          type: string
+        narrative:
+          type: string
+        transferType:
+          type: string
+        txtBenefAddr1:
+          type: string
+        txtBenefAddr2:
+          type: string
+        txtBenefAddr3:
+          type: string
+        bankCode:
+          type: integer
+          format: int32
+      xml:
+        namespace: http://dto.loans.app.fcr.iflex.com
+      x-namespace-qualified: false
+    ArrayOf_tns8_ValidationError:
+      type: object
+      properties:
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+      xml:
+        namespace: http://error.validation.infra.fcr.iflex.com
+      x-namespace-qualified: false
+    ValidationError:
+      type: object
+      properties:
+        applicableAttributes:
+          type: string
+        attributeName:
+          type: string
+        attributeValue:
+          type: string
+        errorCode:
+          type: string
+        errorMessage:
+          type: string
+        methodName:
+          type: string
+        objectName:
+          type: string
+      xml:
+        namespace: http://error.validation.infra.fcr.iflex.com
+      x-namespace-qualified: false
+    ResponseCodeType:
+      type: string
+    ReplyMessageType:
+      type: string
+    ExtendedReply:
+      type: object
+      properties:
+        messages:
+          $ref: '#/components/schemas/ArrayOf_tns6_ReplyMessage'
+      xml:
+        namespace: http://exception.infra.fcr.iflex.com
+      x-namespace-qualified: false
+    OLTPException:
+      type: object
+      properties:
+        ExtensionObject:
+          $ref: '#/components/schemas/FCRException'
+      xml:
+        namespace: http://exception.infra.fcr.iflex.com
+      x-namespace-qualified: false
+    ArrayOf_tns6_ReplyMessage:
+      type: object
+      properties:
+        item:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReplyMessage'
+      xml:
+        namespace: http://exception.infra.fcr.iflex.com
+      x-namespace-qualified: false
+    FCRException:
+      type: object
+      properties:
+        errorCode:
+          type: string
+      xml:
+        namespace: http://exception.infra.fcr.iflex.com
+      x-namespace-qualified: false
+    ReplyMessage:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/ReplyMessageType'
+        message:
+          type: string
+      xml:
+        namespace: http://exception.infra.fcr.iflex.com
+      x-namespace-qualified: false
+    FatalException:
+      type: object
+      properties:
+        ExtensionObject:
+          $ref: '#/components/schemas/OLTPException'
+      xml:
+        namespace: http://exception.infra.fcr.iflex.com
+      x-namespace-qualified: false
+    BaseResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+      xml:
+        namespace: http://dto.entity.fcr.iflex.com
+      x-namespace-qualified: false
+    rootElement_inquireDeductionDetailsResponse:
+      type: object
+      properties:
+        inquireDeductionDetailsReturn:
+          $ref: '#/components/schemas/InquireDeductionDetailsResponse'
+      xml: {
+        }
+      x-namespace-qualified: false
+    rootElement_doDisbursementProcessingForIBOCResponse:
+      type: object
+      properties:
+        doDisbursementProcessingForIBOCReturn:
+          $ref: '#/components/schemas/TransactionStatus'
+      xml: {
+        }
+      x-namespace-qualified: false
+    rootElement_inquireDisbursementDetails:
+      type: object
+      properties:
+        sessionContext:
+          $ref: '#/components/schemas/SessionContext'
+        accountId:
+          type: string
+      xml: {
+        }
+      x-namespace-qualified: false
+    rootElement_inquireDisbursementDetailsResponse:
+      type: object
+      properties:
+        inquireDisbursementDetailsReturn:
+          $ref: '#/components/schemas/DisbursementInquiryResponse'
+      xml: {
+        }
+      x-namespace-qualified: false
+    rootElement_fault:
+      $ref: '#/components/schemas/FatalException'
+    rootElement_inquireDeductionDetails:
+      type: object
+      properties:
+        sessionContext:
+          $ref: '#/components/schemas/SessionContext'
+        product:
+          type: integer
+          format: int32
+        branch:
+          type: integer
+          format: int32
+        loanAmt:
+          type: number
+          format: float
+        termInMonths:
+          type: integer
+          format: int32
+      xml: {
+        }
+      x-namespace-qualified: false
+    rootElement_doDisbursementProcessingForIBOC:
+      type: object
+      properties:
+        context:
+          $ref: '#/components/schemas/SessionContext'
+        loanAccountNo:
+          type: string
+        flgScenario:
+          type: integer
+          format: int32
+        flgSchemeLn:
+          type: string
+        iBOCdeductionDetailsDTO:
+          type: array
+          items:
+            $ref: '#/components/schemas/IBOCdeductionDetailsDTO'
+        acctType:
+          type: string
+        disbAmount:
+          type: number
+          format: float
+        codAcctNoDisb:
+          type: string
+        ledgerCcyShrtName:
+          type: string
+        ledgerBranchCode:
+          type: integer
+          format: int32
+        ioiTerm:
+          type: integer
+          format: int32
+        firstRepayDate:
+          type: string
+        iBOCPayoutDetailsDTO:
+          type: array
+          items:
+            $ref: '#/components/schemas/IBOCPayoutDetailsDTO'
+      xml: {
+        }
+      x-namespace-qualified: false
